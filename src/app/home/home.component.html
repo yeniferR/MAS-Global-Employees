@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mas Globals</title>
+</head>
+
+<body>
+  <div class="center">
+    <br>
+    <mat-form-field>
+      <mat-label>Id Number</mat-label>
+      <input matInput placeholder="Ex. 1088333221" [(ngModel)]="valor">
+    </mat-form-field>
+    <!--<input type="text" style="width: 20%;" [(ngModel)]="valor" >-->
+    <br>
+    <br>
+    <button mat-raised-button color="primary" (click)="getResulEmployees()">SEARCH</button>
+    <!--<button  (click)="getResulEmployees()">SEARCH</button>-->
+    <br>
+    <br>
+    <!-- <table *ngIf='resultEmployees != null'>
+      <tr>
+        <th>NAME</th>
+        <th>CONTRACTTYPENAME</th>
+        <th>HOURLYSALARY</th>
+        <th>MONTHLYSALARY</th>
+        <th>IDENTIFICATIONNUMBER</th>
+        <th>YEARLYSALARY</th>
+      </tr>
+      <tr *ngFor="let employees of resultEmployees">
+        <td>{{employees.NAME}}</td>
+        <td>{{employees.CONTRACTTYPENAME}}</td>
+        <td>{{employees.HOURLYSALARY}}</td>
+        <td>{{employees.MONTHLYSALARY}}</td>
+        <td>{{employees.IDENTIFICATIONNUMBER}}</td>
+        <td>{{employees.YEARLYSALARY}}</td>
+      </tr>
+    </table> -->
+    <mat-table [dataSource]="resultEmployees" class="mat-elevation-z8" *ngIf="resultEmployees != null">
+      <ng-container matColumnDef="Id Number">
+        <mat-header-cell *matHeaderCellDef> Id Number </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.IDENTIFICATIONNUMBER}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.NAME}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="Contract Type">
+        <mat-header-cell *matHeaderCellDef> Contract Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.CONTRACTTYPENAME}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="Hourly Salary">
+        <mat-header-cell *matHeaderCellDef> Hourly Salary </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.HOURLYSALARY}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="Monthly Salary">
+        <mat-header-cell *matHeaderCellDef> Monthly Salary </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.MONTHLYSALARY}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Yearly Salary">
+        <mat-header-cell *matHeaderCellDef> Yearly Salary </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.YEARLYSALARY}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</body>
+
+</html>
